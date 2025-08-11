@@ -1,21 +1,83 @@
 from servo import Servo
 from machine import Pin, PWM
+import time
 
-class Servo_Test:
+class Servo_Movement:
     def __init__(self, speed):
-        self.__speed = speed
-        ...
+        self.servo_left_pin = servo_left_pin
+        self.left_wheel = Servo(PWM(Pin(servo_left_pin)))
+        self.servo_right_pin = servo_right_pin
+        self.right_wheel = Servo(PWM(Pin(servo_right_pin)))
+        self.__debug = debug
 
     def Forward(self):
-        ...
+        if self.__debug:
+            print("Servo moving: FORWARD")
+        self.left_wheel.set_duty(2500)
+        self.right_wheel.set_duty(500)
 
-    def Turn_CW(self):
-        ...
+    def Forward_Slow(self):
+        if self.__debug:
+            print("Servo moving: FORWARD - SLOW")
+        self.left_wheel.set_duty(1800)
+        self.right_wheel.set_duty(1200)
 
-    def Turn_ACW(self):
-        ...
+    def Turn_Right(self):
+        if self.__debug:
+            print("Servo moving: TURNING - RIGHT")
+        timevar = int(0)
+
+        while timevar < 1: 
+            self.right_wheel.set_duty(1200)
+            self.left_wheel.set_duty(1800)
+            timevar = int(timevar + 1)
+            time.sleep(0)
+            self.right_wheel.set_duty(1500)
+            self.left_wheel.set_duty(1500)
+            print(timevar)
+            time.sleep(1.4)
+            if self.right_wheel.set_duty(1200) | self.left_wheel.set_duty(1800):
+                self.right_wheel.set_duty(1500)
+                self.left_wheel.set_duty(1500)
+        
+
+    def Turn_Left(self):
+        if self.__debug:
+            print("Servo moving: TURNING - LEFT")
+
+        timevar = int(0)
+
+        while timevar < 1: 
+            self.right_wheel.set_duty(1800)
+            self.left_wheel.set_duty(1200)
+            timevar = int(timevar + 1)
+            time.sleep(0)
+            self.right_wheel.set_duty(1500)
+            self.left_wheel.set_duty(1500)
+            print(timevar)
+            time.sleep(1.4)
+            if self.right_wheel.set_duty(1800) | self.left_wheel.set_duty(1200):
+                self.right_wheel.set_duty(1500)
+                self.left_wheel.set_duty(1500)
 
     def Backward(self):
-        ...
+        if self.__debug:
+            print("Servo moving: BACKWARD")
+        self.left_wheel.set_duty(500)
+        self.right_wheel.set_duty(2500)
+
+    def Backward_Slow(self):
+        if self.__debug:
+            print("Servo moving: BACKWARD - SLOW")
+        self.left_wheel.set_duty(1200)
+        self.right_wheel.set_duty(1800)
+
 
     def Self_Destruct(self):
+        # this is literally just the stop function 
+        #its just named that because i thought it was funny
+        if self.__debug:
+            print("Servo: SELF DESTRUCT SEQUENCE")
+        self.left_wheel.set_duty(1500)
+        self.right_wheel.set_duty(1500)
+
