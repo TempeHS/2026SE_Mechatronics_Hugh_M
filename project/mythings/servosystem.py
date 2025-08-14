@@ -10,19 +10,19 @@ class Servo_Movement:
         self.right_wheel = Servo(PWM(Pin(servo_right_pin)))
         self.__debug = debug
 
-    def Forward(self):
+    def forward(self):
         if self.__debug:
             print("Servo moving: FORWARD")
         self.left_wheel.set_duty(2500)
         self.right_wheel.set_duty(500)
 
-    def Forward_Slow(self):
+    def forward_slow(self):
         if self.__debug:
             print("Servo moving: FORWARD - SLOW")
         self.left_wheel.set_duty(1800)
         self.right_wheel.set_duty(1200)
 
-    def Turn_Right(self):
+    def turn_right(self):
         if self.__debug:
             print("Servo moving: TURNING - RIGHT")
         timevar = int(0)
@@ -41,7 +41,7 @@ class Servo_Movement:
                 self.left_wheel.set_duty(1500)
         
 
-    def Turn_Left(self):
+    def turn_left(self):
         if self.__debug:
             print("Servo moving: TURNING - LEFT")
 
@@ -60,24 +60,24 @@ class Servo_Movement:
                 self.right_wheel.set_duty(1500)
                 self.left_wheel.set_duty(1500)
 
-    def Backward(self):
+    def backward(self):
         if self.__debug:
             print("Servo moving: BACKWARD")
         self.left_wheel.set_duty(500)
         self.right_wheel.set_duty(2500)
 
-    def Backward_Slow(self):
+    def backward_slow(self):
         if self.__debug:
             print("Servo moving: BACKWARD - SLOW")
         self.left_wheel.set_duty(1200)
         self.right_wheel.set_duty(1800)
 
 
-    def Self_Destruct(self):
+    def self_destruct(self):
         # this is literally just the stop function 
         #its just named that because i thought it was funny
         if self.__debug:
-            print("Servo: SELF DESTRUCT SEQUENCE")
+            print("Servo: STOPPING")
         self.left_wheel.set_duty(1500)
         self.right_wheel.set_duty(1500)
 
