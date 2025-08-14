@@ -1,9 +1,10 @@
 from servo import Servo
 from machine import Pin, PWM
 import time
+from PiicoDev_Ultrasonic import PiicoDev_Ultrasonic
 
 class Servo_Movement:
-    def __init__(self, speed):
+    def __init__(self, speed, debug = False):
         self.servo_left_pin = servo_left_pin
         self.left_wheel = Servo(PWM(Pin(servo_left_pin)))
         self.servo_right_pin = servo_right_pin
@@ -80,4 +81,20 @@ class Servo_Movement:
             print("Servo: STOPPING")
         self.left_wheel.set_duty(1500)
         self.right_wheel.set_duty(1500)
+
+class ULTRAKILL:
+    def __init__(self, range_a ,range_b, debug = False):
+        self.__range_a = range_a
+        self.__range_b = range_b
+        self.__debug = debug
+
+    def distance(self):
+        self.__range_a.distance_mm (id=[0, 0, 0, 0])
+        self.__range_b.distance_mm (id=[1, 0, 0, 0])
+
+    def dist_front(self):
+        return int(self.__range_b.distance_mm)
+
+    def dist_side(self):
+        return int(self.__range_a.distance_mm)
 
