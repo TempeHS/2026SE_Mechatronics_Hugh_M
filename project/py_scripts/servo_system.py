@@ -1,10 +1,10 @@
-from servo import Servo
 from machine import Pin, PWM
+from project.lib.servo import Servo
 import time
-from PiicoDev_Ultrasonic import PiicoDev_Ultrasonic
+from project.lib.PiicoDev_Ultrasonic import PiicoDev_Ultrasonic
 
 class Servo_Movement:
-    def __init__(self, speed, debug = False):
+    def __init__(self, servo_left_pin, servo_right_pin, debug = False):
         self.servo_left_pin = servo_left_pin
         self.left_wheel = Servo(PWM(Pin(servo_left_pin)))
         self.servo_right_pin = servo_right_pin
@@ -37,7 +37,7 @@ class Servo_Movement:
             self.left_wheel.set_duty(1500)
             print(timevar)
             time.sleep(1.4)
-            if self.right_wheel.set_duty(1200) | self.left_wheel.set_duty(1800):
+            if self.right_wheel.set_duty(1200) and self.left_wheel.set_duty(1800):
                 self.right_wheel.set_duty(1500)
                 self.left_wheel.set_duty(1500)
         
@@ -57,7 +57,7 @@ class Servo_Movement:
             self.left_wheel.set_duty(1500)
             print(timevar)
             time.sleep(1.4)
-            if self.right_wheel.set_duty(1800) | self.left_wheel.set_duty(1200):
+            if self.right_wheel.set_duty(1800) and self.left_wheel.set_duty(1200):
                 self.right_wheel.set_duty(1500)
                 self.left_wheel.set_duty(1500)
 
@@ -83,7 +83,7 @@ class Servo_Movement:
         self.right_wheel.set_duty(1500)
 
 class ULTRAKILL:
-    def __init__(self, range_a ,range_b, debug = False):
+    def __init__ (self, range_a, range_b, debug = False):
         self.__range_a = range_a
         self.__range_b = range_b
         self.__debug = debug
@@ -97,4 +97,8 @@ class ULTRAKILL:
 
     def dist_side(self):
         return int(self.__range_a.distance_mm)
+
+class Colour_sensor:
+    def __init__ (self,   debug = False):
+
 
