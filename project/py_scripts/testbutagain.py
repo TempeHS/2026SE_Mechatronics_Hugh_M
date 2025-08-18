@@ -1,7 +1,6 @@
+from time import sleep
 from machine import Pin, PWM
-from time import sleep 
-from project.py_scripts.servo_system import Servo_Movement
-from project.lib.servo import Servo
+from robot_classes import Servo_Movement
 
 servo_motors = Servo_Movement(20, 18)
 

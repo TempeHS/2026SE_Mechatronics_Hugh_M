@@ -20,8 +20,8 @@ class Servo_Movement:
     def forward_slow(self):
         if self.__debug:
             print("Servo moving: FORWARD - SLOW")
-        self.left_wheel.set_duty(1800)
-        self.right_wheel.set_duty(1200)
+        self.left_wheel.set_duty(1700)
+        self.right_wheel.set_duty(1300)
 
     def turn_right(self):
         if self.__debug:
@@ -29,8 +29,8 @@ class Servo_Movement:
         timevar = int(0)
 
         while timevar < 1: 
-            self.right_wheel.set_duty(1200)
-            self.left_wheel.set_duty(1800)
+            self.right_wheel.set_duty(1300)
+            self.left_wheel.set_duty(1700)
             timevar = int(timevar + 1)
             time.sleep(0)
             self.right_wheel.set_duty(1500)
@@ -100,5 +100,4 @@ class ULTRAKILL:
 
 class Colour_sensor:
     def __init__ (self,   debug = False):
-
-
+        ...
