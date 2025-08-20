@@ -114,31 +114,36 @@ class ULTRAKILL:
     def __init__ (self, range_a, range_b, debug = False):
         self.__range_a = range_a
         self.__range_b = range_b
+        self.front_sensor = PiicoDev_Ultrasonic(id=range_a)
+        self.side_sensor = PiicoDev_Ultrasonic(id=range_b)
         self.__debug = debug
 
     def distance(self):
-        self.__range_a.distance_mm (id=[0, 0, 0, 0])
-        self.__range_b.distance_mm (id=[0, 0, 1, 0])
+        return(self.front_sensor.distance_mm() (id=[0, 0, 0, 0]), self.side_sensor.distance_mm() (id=[0, 0, 1, 0]))
 
     def dist_front(self):
-        return int(self.__range_b.distance_mm)
+        return self.front_sensor.distance_mm()
 
     def dist_side(self):
-        return int(self.__range_a.distance_mm)
+        return self.side_sensor.distance_mm()
 
+ultrasonic = ULTRAKILL([0, 0, 0, 0], [0, 0, 1, 0])
 
-sensor_output_fr = ULTRAKILL.dist_front
-sensor_output_si = ULTRAKILL.dist_side
-sensor_output_both = sensor_output_fr, sensor_output_si
-
+sensor_output_fr = ultrasonic.dist_front
+sensor_output_si = ultrasonic.dist_side
+"""
 def ultrasonic_testing():
     while True:
-        servo_motors.forward()
-        print(f"Sensor Outputs: {sensor_output_both}")
-    if 
+        print(f"OUTPUTS//FRONT: {sensor_output_fr}")
+        print(f"OUTPUTS//SIDE: {sensor_output_si}")
+        if sensor_output_si < 20:
+            servo_motors.self_destruct()
+            servo_motors.turn_left()
+        else:
+            servo_motors.forward_slow()
 
-
-
+ultrasonic_testing()
+"""
 
 class Colour_Sensor:
     def __init__ (self,   debug = False):
