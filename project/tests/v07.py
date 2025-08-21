@@ -1,9 +1,9 @@
 
-from robot_classes import ULTRAKILL, Servo_Movement
+from robot_classes import Utrasonic, Servo_Movement
 import time
 
 servo_motors = Servo_Movement(20, 18)
-ultrasonic = ULTRAKILL([0, 0, 0, 0], [0, 0, 1, 0])
+ultrasonic = Utrasonic([0, 0, 0, 0], [0, 0, 1, 0])
 
 sensor_output_fr = ultrasonic.dist_front
 sensor_output_si = ultrasonic.dist_side

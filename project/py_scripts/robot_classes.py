@@ -110,7 +110,7 @@ def movement_testing():
     servo_motors.self_destruct
 
 
-class ULTRAKILL:
+class Utrasonic:
     def __init__ (self, range_a, range_b, debug = False):
         self.__range_a = range_a
         self.__range_b = range_b
@@ -127,7 +127,7 @@ class ULTRAKILL:
     def dist_side(self):
         return self.side_sensor.distance_mm()
 
-ultrasonic = ULTRAKILL([0, 0, 0, 0], [0, 0, 1, 0])
+ultrasonic = Utrasonic([0, 0, 0, 0], [0, 0, 1, 0])
 
 sensor_output_fr = ultrasonic.dist_front
 sensor_output_si = ultrasonic.dist_side
