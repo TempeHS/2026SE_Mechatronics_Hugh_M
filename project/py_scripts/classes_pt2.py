@@ -123,7 +123,23 @@ class Ultrasonic:
         return (self.front_sensor.distance_mm)
 
 
+ultrasonic = Ultrasonic([0, 0, 0, 0], [0, 0, 1, 0])
+
+sensor_output_fr = ultrasonic.dist_front
+"""
+def ultrasonic_testing():
+    while True:
+        print(f"OUTPUTS//FRONT: {sensor_output_fr}")
+        print(f"OUTPUTS//SIDE: {sensor_output_si}")
+        if sensor_output_si < 20:
+            servo_motors.self_destruct()
+            servo_motors.turn_left()
+        else:
+            servo_motors.forward_slow()
+
+ultrasonic_testing()
+"""
+
 class Colour_Sensor:
     def __init__ (self,   debug = False):
         ...
-        # Didn't have time to implement :>
